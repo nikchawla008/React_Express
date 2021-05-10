@@ -50,9 +50,9 @@ class GetPosts extends Component{
                     <br /> <br/>
                     </div>
                     <div>
-                        <input type='text' onChange={this.handleTitleChange} className='searchbar'  placeholder='New Post Title' />
-                        <input type='text' onChange={this.handleBodyChange} className='searchbar' placeholder='New Post Body' />
-                        <input type='text' onChange={this.handleUserIdChange} className='searchbar' placeholder='New Post UserId'/>
+                        <input type='text' onChange={this.handleTitleChange} className='searchbar' id='newposttitle'  placeholder='New Post Title' />
+                        <input type='text' onChange={this.handleBodyChange} className='searchbar' id='newpostbody' placeholder='New Post Body' />
+                        <input type='text' onChange={this.handleUserIdChange} className='searchbar' id='newpostuser' placeholder='New Post UserId'/>
                         <button className='button' onClick={()=> this.addPost()}>Add new post</button>
                     </div>
                         <ul>
@@ -101,6 +101,7 @@ class GetPosts extends Component{
         axios.delete('http://localhost:4007/deletePost/' + id_deleted)
             .then(res=>{
                 console.log(res);
+                // don't hit api
                 axios.get('http://localhost:4007/showPosts')
                 .then(response => this.setState({filtered_posts:response.data}));
             });

@@ -103,7 +103,12 @@ app.delete('/deletePost/:id', (request, response)=>{
 //to add post, send the userid, title and body
 app.post('/addPost', (request, response)=>{
 
-    let obj = {userId:request.body.userId, title:request.body.title, body:request.body.body};
+    let obj = {
+        userId:request.body.userId,
+        title:request.body.title,
+        body:request.body.body
+    };
+
     console.log(obj)
     db.query('INSERT INTO posts SET ?', obj ,(error, results) => {
         if(error) throw error;
