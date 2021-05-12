@@ -10,8 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mocha": "^8.4.0",
     "mysql": "^2.18.1"
   }
 }

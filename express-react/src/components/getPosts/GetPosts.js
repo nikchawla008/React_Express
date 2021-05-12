@@ -31,7 +31,7 @@ class GetPosts extends Component{
     componentDidMount() {
 
         //fetch posts from database
-        axios.get('http://localhost:4007/showPosts')
+        axios.get('http://localhost:4007/api/showPosts')
             .then(response => {
             this.setState({filtered_posts:response.data})
             });
@@ -81,13 +81,13 @@ class GetPosts extends Component{
 
             // if searchfield is not empty, set state filtered_posts = searchPost/e.target.value
             if (searchfield!==''){
-                axios.get('http://localhost:4007/searchPost/' + searchfield)
+                axios.get('http://localhost:4007/api/searchPost/' + searchfield)
                     .then(response => this.setState({filtered_posts:response.data}));
 
             }
             //if searchfield is empty, set state filtered_posts = showPosts output
             else {
-                axios.get('http://localhost:4007/showPosts')
+                axios.get('http://localhost:4007/api/showPosts')
                 .then(response => this.setState({filtered_posts:response.data}));
             }
 
@@ -98,11 +98,11 @@ class GetPosts extends Component{
 // Delete post from database
     delPost(item){
         const id_deleted = item.id;
-        axios.delete('http://localhost:4007/deletePost/' + id_deleted)
+        axios.delete('http://localhost:4007/api/deletePost/' + id_deleted)
             .then(res=>{
                 console.log(res);
                 // don't hit api
-                axios.get('http://localhost:4007/showPosts')
+                axios.get('http://localhost:4007/api/showPosts')
                 .then(response => this.setState({filtered_posts:response.data}));
             });
 
@@ -112,7 +112,7 @@ class GetPosts extends Component{
 //Fetch posts from source again and set new state
     fetchAgain(){
 
-        axios.get('http://localhost:4007/fetchPosts')
+        axios.get('http://localhost:4007/api/fetchPosts')
             .then((response)=> {
                 console.log(response);
                 this.setState({filtered_posts:response.data})
@@ -140,7 +140,7 @@ class GetPosts extends Component{
     {
         let obj = {title:this.state.newtitle, body:this.state.newbody, userId:this.state.newuserId};
 
-        axios.post('http://localhost:4007/addPost', obj )
+        axios.post('http://localhost:4007/api/addPost', obj )
             .then(response => console.log(response));
 
         //resetting the input boxes

@@ -16,7 +16,7 @@ class Edit extends Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4007/getPost/' + this.state.id)
+        axios.get('http://localhost:4007/api/getPost/' + this.state.id)
             .then(response => {this.setState({id:this.state.id, posts:response.data});
                         console.log(this.state.posts[0]);
                         this.setState({newtitle:response.data[0].title, newbody:response.data[0].body});
@@ -69,7 +69,7 @@ class Edit extends Component{
 
         if (this.state.newbody !== post.body || this.state.newtitle !== post.title ){
 
-            axios.put('http://localhost:4007/editPost',
+            axios.put('http://localhost:4007/api/editPost',
                 {title:this.state.newtitle,
                     body: this.state.newbody,
                     userId : post.userId,
@@ -77,7 +77,7 @@ class Edit extends Component{
                 })
             .then(response => console.log(response));
 
-            axios.get('http://localhost:4007/getPost/' + this.state.id)
+            axios.get('http://localhost:4007/api/getPost/' + this.state.id)
             .then(response => {this.setState({id:this.state.id, posts:response.data});
                         this.setState({newtitle:response.data[0].title, newbody:response.data[0].body});
             })
