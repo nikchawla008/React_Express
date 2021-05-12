@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64704795-f205-445b-8bb2-e56a3320a85e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Learning Express/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Learning Express/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/getPosts/GetPosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/getPosts/GetPosts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +74,7 @@
       <workItem from="1620647348649" duration="1158000" />
       <workItem from="1620649125962" duration="877000" />
       <workItem from="1620726764193" duration="14000" />
+      <workItem from="1620799509376" duration="873000" />
     </task>
     <servers />
   </component>

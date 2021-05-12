@@ -150,7 +150,7 @@ class GetPosts extends Component{
 
         this.setState({newtitle:'', newbody:'', newuserId:''});
 
-        axios.get('http://localhost:4007/showPosts')
+        axios.get('http://localhost:4007/api/showPosts')
                 .then(response => this.setState({filtered_posts:response.data}));
 
 
