@@ -11,11 +11,15 @@ app.post('/addPost', (request, response)=>{
         body:request.body.body
     };
 
-    console.log(obj)
     response.locals.connection.query('INSERT INTO posts SET ?', obj ,(error, results) => {
-        if(error) throw error;
-        response.send('Object added')
-        console.log(results)
+        if(error) {
+            // 400 BAD REQUEST if post not Added to Database
+            response.status(400).send(error);
+            }
+        else
+        {   // Success 201 for POST methods
+            response.status(201).send(obj);
+            }
     });
 
 });

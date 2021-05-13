@@ -15,7 +15,6 @@ const dbconfig = require('./dbconfig');
 app.use(function(req, res, next){
 	res.locals.connection = mysql.createConnection(dbconfig);
 	res.locals.connection.connect( (err) => {if (err) {throw err;}
-	console.log('MYSQL Connected')
 	});
 	next();
 });
@@ -50,14 +49,21 @@ app.use('/api', addPost)
 app.use('/api', searchPost);
 
 //Edit post using put, send new title and new body as the data
-app.use('/api', editPost)
+app.use('/api', editPost);
 
+/*
+dummy = require('./routes/dummyFetch');
+app.use('/test', dummy);
+*/
 
 
 var http = require('http');
 module.exports = app;
 var server = http.createServer(app);
 server.listen(4007);
+
+
+module.exports = server;
 
 
 

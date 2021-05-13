@@ -4,7 +4,6 @@ import {Link, withRouter} from 'react-router-dom'
 import axios from 'axios';
 
 
-
 class GetPosts extends Component{
 
     constructor(props) {
@@ -26,16 +25,12 @@ class GetPosts extends Component{
     }
 
 
-    // Loading the posts using fetch
-
+    // Loading the posts using showPosts API
     componentDidMount() {
-
-        //fetch posts from database
         axios.get('http://localhost:4007/api/showPosts')
             .then(response => {
             this.setState({filtered_posts:response.data})
             });
-
     }
 
 
@@ -101,7 +96,7 @@ class GetPosts extends Component{
         axios.delete('http://localhost:4007/api/deletePost/' + id_deleted)
             .then(res=>{
                 console.log(res);
-                // don't hit api
+                // don't hit api, delete from state filtered_posts
                 axios.get('http://localhost:4007/api/showPosts')
                 .then(response => this.setState({filtered_posts:response.data}));
             });
@@ -138,7 +133,10 @@ class GetPosts extends Component{
 // Add new post to database functionality
     addPost()
     {
-        let obj = {title:this.state.newtitle, body:this.state.newbody, userId:this.state.newuserId};
+        let obj = {title:this.state.newtitle,
+            body:this.state.newbody,
+            userId:this.state.newuserId
+        };
 
         axios.post('http://localhost:4007/api/addPost', obj )
             .then(response => console.log(response));

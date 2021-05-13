@@ -5,11 +5,13 @@ router = express();
 router.get('/showPosts', (request, response) => {
     response.locals.connection.query('SELECT * from posts', (error, results)=>{
         if(error) {
-            throw error
+            //Return Internal Server Error
+            response.status(500).send(error);
         }
         else
-        {console.log('Posts sent to show');
-        return response.json(results);}
+        {
+        //Return Success 200 for get requests
+        return response.status(200).send(results);}
     });
 });
 

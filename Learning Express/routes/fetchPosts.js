@@ -15,7 +15,6 @@ router.get('/fetchPosts', (request, response)=>{
     //run SQL
     response.locals.connection.query(table, (error, result)=>{
         if (error) throw error;
-        console.log(result);
     });
 
 
@@ -29,12 +28,15 @@ router.get('/fetchPosts', (request, response)=>{
                 let obj = {id:post.id,userId: post.userId, title: post.title, body: post.body};
 
                 response.locals.connection.query(insertPost, obj, (error, results) => {
-                        if (error) throw error;
+                        if (error) {
+                            //Return 400 BAD REQUEST in case of Error
+                            response.status(400).send('Unable to fetch Posts');
+                        }
                     }
                 )
             });
-
-            response.send(postlist);
+            //Return Success 200 for get requests
+            response.status(200).send(postlist);
 
         });
 
